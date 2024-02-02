@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?&family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --lighter: linear-gradient(159deg, rgb(45, 45, 58) 0%, rgb(43, 43, 53) 100%);
+  ---background: #2d2d2f;
+}
+
+body {
+  background-color: var(---background);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
