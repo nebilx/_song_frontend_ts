@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getGenre, editSong } from "../../redux/store/slice/song.slice";
 import { Label, Container, Input, Button, Head, Select } from "../index.style";
-import { Data, Rstate } from "../../type";
+import { Data, MainState } from "../../type";
 
 interface updateId {
 	id: string;
@@ -14,9 +14,9 @@ const UpdateSong: React.FC = () => {
 	const { id } = useParams<updateId>();
 	const dispatch = useDispatch();
 	const navigator = useNavigate();
-	const isLoading = useSelector((state: Rstate) => state.song.isLoading);
-	const genre = useSelector((state: Rstate) => state.song.genre);
-	const songList = useSelector((state: Rstate) => state.song.data);
+	const isLoading = useSelector((state: MainState) => state.song.isLoading);
+	const genre = useSelector((state: MainState) => state.song.genre);
+	const songList = useSelector((state: MainState) => state.song.data);
 
 	const [song, setSong] = useState<Data>({
 		title: "",
@@ -24,7 +24,7 @@ const UpdateSong: React.FC = () => {
 		artist: "",
 		genre: "",
 	});
-	const message = useSelector((state: Rstate) => state.song.message);
+	const message = useSelector((state: MainState) => state.song.message);
 
 	useEffect(() => {
 		if (message !== "") navigator("/");
@@ -35,7 +35,7 @@ const UpdateSong: React.FC = () => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		const songs = songList.data?.find((s) => s._id === id);
+		const songs = songList?.find((s) => s._id === id);
 		if (songs) {
 			setSong({
 				title: songs.title,
@@ -109,7 +109,7 @@ const UpdateSong: React.FC = () => {
 						<option disabled hidden>
 							Select Genre
 						</option>
-						{genre.data?.map((data, i) => (
+						{genre?.map((data: string, i: number) => (
 							<option selected={data === song.genre} value={data} key={i}>
 								{data}
 							</option>

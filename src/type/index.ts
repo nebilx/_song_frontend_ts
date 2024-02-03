@@ -1,22 +1,50 @@
-export type Rstate = {
+export type MainState = {
 	song: {
-		data: {
-			data: Data[];
-		};
-		genre: {
-			data: string[];
-		};
-		statics: {
-			data: Data[];
-		} | null;
+		data: Data[];
+		genre: string[];
+		statics: SongData[];
 		isLoading: boolean;
 		message: string;
 		error: string;
 	};
 };
 
+export interface SongCount {
+	title: number;
+	album: number;
+	artist: number;
+	genre: number;
+}
+
+export interface NoSongTotal {
+	noSongTotal: SongCount[];
+}
+
+export interface NoSongGenre {
+	genre: string;
+	title: number;
+}
+
+export interface NoSongAndAlbumArtist {
+	artist: string;
+	title: number;
+	album: number;
+}
+
+export interface NoSongAlbum {
+	album: string;
+	title: number;
+}
+
+export interface SongData {
+	noSongTotal: NoSongTotal[];
+	noSongGenre: NoSongGenre[];
+	noSongAndAlbumArtist: NoSongAndAlbumArtist[];
+	noSongAlbum: NoSongAlbum[];
+}
+
 export interface ContentProps {
-	bar?: boolean; // Using `?` to mark the prop as optional
+	bar?: boolean;
 }
 
 export interface Data {
@@ -29,8 +57,8 @@ export interface Data {
 
 export interface Song {
 	data: Data[];
-	statics: Data | null;
-	genre: Data[];
+	statics: [] | null;
+	genre: string[];
 	isLoading: boolean;
 	message: string;
 	error: string | unknown;

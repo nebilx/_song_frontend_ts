@@ -17,13 +17,13 @@ export const request = {
 			method: "get",
 			url: `/api/genre`,
 		}),
-	addSong: (data: { data: Data }) =>
+	addSong: (data: Data) =>
 		axios.request({
 			method: "post",
 			url: `/api`,
 			data,
 		}),
-	editSong: (id: string, data: { data: Data }) =>
+	editSong: (id: string, data: Data) =>
 		axios.request({
 			method: "put",
 			url: `/api/${id}`,

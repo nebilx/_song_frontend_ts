@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getGenre, addSong } from "../../redux/store/slice/song.slice";
 import { Label, Container, Input, Button, Head, Select } from "../index.style";
-import { Data, Rstate } from "../../type";
+import { Data, MainState } from "../../type";
 
 const AddSong: React.FC = () => {
 	const dispatch = useDispatch();
 	const navigator = useNavigate();
-	const genre = useSelector((state: Rstate) => state.song.genre);
-	const isLoading = useSelector((state: Rstate) => state.song.isLoading);
+	const genre = useSelector((state: MainState) => state.song.genre);
+	const isLoading = useSelector((state: MainState) => state.song.isLoading);
 
 	const [song, setSong] = useState<Data>({
 		title: "",
@@ -18,7 +18,7 @@ const AddSong: React.FC = () => {
 		genre: "",
 	});
 
-	const message = useSelector((state: Rstate) => state.song.message);
+	const message = useSelector((state: MainState) => state.song.message);
 
 	useEffect(() => {
 		if (message !== "") navigator("/");
@@ -79,7 +79,7 @@ const AddSong: React.FC = () => {
 						<option disabled defaultValue="">
 							Select Genre
 						</option>
-						{genre.data?.map((data: string, i: number) => (
+						{genre?.map((data: string, i: number) => (
 							<option value={data} key={i}>
 								{data}
 							</option>

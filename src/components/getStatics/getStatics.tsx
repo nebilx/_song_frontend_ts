@@ -8,11 +8,16 @@ import { Head } from "../index.style";
 import { Container } from "./getStatics.styled";
 import { Card, CardContainer } from "./getStatics.styled";
 import { Table } from "./getStatics.styled";
-import { Rstate, Data } from "../../type/index";
+import {
+	MainState,
+	NoSongAndAlbumArtist,
+	NoSongAlbum,
+	NoSongGenre,
+} from "../../type/index";
 
 const Statics: React.FC = () => {
-	const statics = useSelector((state: Rstate) => state.song.statics);
-	const isLoading = useSelector((state: Rstate) => state.song.isLoading);
+	const statics = useSelector((state: MainState) => state.song.statics);
+	const isLoading = useSelector((state: MainState) => state.song.isLoading);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -37,7 +42,7 @@ const Statics: React.FC = () => {
 								<span>
 									<GiSing />
 								</span>
-								<h2>{statics?.data.noSongTotal[0].title}</h2>
+								<h2>{statics?.noSongTotal[0].title}</h2>
 							</Card>
 
 							<Card>
@@ -45,7 +50,7 @@ const Statics: React.FC = () => {
 								<span>
 									<RiAlbumFill />
 								</span>
-								<h2>{statics?.data.noSongTotal[0].album}</h2>
+								<h2>{statics?.noSongTotal[0].album}</h2>
 							</Card>
 
 							<Card>
@@ -53,7 +58,7 @@ const Statics: React.FC = () => {
 								<span>
 									<BsFillPersonBadgeFill />
 								</span>
-								<h2>{statics?.data.noSongTotal[0].artist}</h2>
+								<h2>{statics?.noSongTotal[0].artist}</h2>
 							</Card>
 
 							<Card>
@@ -61,7 +66,7 @@ const Statics: React.FC = () => {
 								<span>
 									<RiFolderMusicFill />
 								</span>
-								<h2>{statics?.data.noSongTotal[0].genre}</h2>
+								<h2>{statics?.noSongTotal[0].genre}</h2>
 							</Card>
 						</CardContainer>
 					</Container>
@@ -77,8 +82,8 @@ const Statics: React.FC = () => {
 								<th>T Song</th>
 							</tr>
 
-							{statics?.data.noSongAndAlbumArtist.map(
-								(data: Data, i: number) => (
+							{statics?.noSongAndAlbumArtist.map(
+								(data: NoSongAndAlbumArtist, i: number) => (
 									<tr key={i}>
 										<td>{i + 1}</td>
 
@@ -100,7 +105,7 @@ const Statics: React.FC = () => {
 								<th>T Song</th>
 							</tr>
 
-							{statics?.data.noSongAlbum.map((data: Data, i: number) => (
+							{statics?.noSongAlbum.map((data: NoSongAlbum, i: number) => (
 								<tr key={i}>
 									<td>{i + 1}</td>
 									<td>{data.album}</td>
@@ -119,7 +124,7 @@ const Statics: React.FC = () => {
 								<th>T Song</th>
 							</tr>
 
-							{statics?.data.noSongGenre.map((data: Data, i: number) => (
+							{statics?.noSongGenre.map((data: NoSongGenre, i: number) => (
 								<tr key={i}>
 									<td>{i + 1}</td>
 									<td>{data.genre}</td>

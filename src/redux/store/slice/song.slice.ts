@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Data, Song } from "../../../type";
+import { Data, Song, SongData } from "../../../type";
 
 const initialState: Song = {
 	data: [],
-	statics: null,
+	statics: [],
 	genre: [],
 	isLoading: false,
 	message: "",
@@ -27,10 +27,10 @@ const songSlice = createSlice({
 		setSong(state, action: PayloadAction<Data[]>) {
 			state.data = action.payload;
 		},
-		setStatics(state, action: PayloadAction<Data | null>) {
+		setStatics(state, action: PayloadAction<SongData>) {
 			state.statics = action.payload;
 		},
-		setGenre(state, action: PayloadAction<Data[]>) {
+		setGenre(state, action: PayloadAction<string[]>) {
 			state.genre = action.payload;
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
