@@ -14,7 +14,8 @@ const reducer = combineReducers({
 
 const store = configureStore({
 	reducer,
-	middleware: [sagaMiddleware],
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(watcherSaga);

@@ -7,6 +7,7 @@ import { Data, Rstate } from "../../type";
 
 interface updateId {
 	id: string;
+	[key: string]: string;
 }
 
 const UpdateSong: React.FC = () => {
@@ -27,16 +28,14 @@ const UpdateSong: React.FC = () => {
 
 	useEffect(() => {
 		if (message !== "") navigator("/");
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [message]);
+	}, [message, navigator]);
 
 	useEffect(() => {
 		dispatch(getGenre());
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
-		const songs = songList && songList.find((s) => s._id === id);
+		const songs = songList.data?.find((s) => s._id === id);
 		if (songs) {
 			setSong({
 				title: songs.title,
@@ -65,8 +64,8 @@ const UpdateSong: React.FC = () => {
 						value={song.title}
 						onChange={(e) => setSong({ ...song, title: e.target.value })}
 						placeholder="Song Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<br />
@@ -78,8 +77,8 @@ const UpdateSong: React.FC = () => {
 						value={song.artist}
 						onChange={(e) => setSong({ ...song, artist: e.target.value })}
 						placeholder="Artist Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<br />
@@ -91,8 +90,8 @@ const UpdateSong: React.FC = () => {
 						value={song.album}
 						onChange={(e) => setSong({ ...song, album: e.target.value })}
 						placeholder="Album Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<br />
@@ -121,7 +120,7 @@ const UpdateSong: React.FC = () => {
 					<Button
 						type="button"
 						onClick={() => {
-							dispatch(editSong({ id: id, data: song }));
+							dispatch(editSong({ id: id ?? "", data: song }));
 						}}
 					>
 						Update

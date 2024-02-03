@@ -17,8 +17,7 @@ const Statics: React.FC = () => {
 
 	useEffect(() => {
 		dispatch(getStatics());
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>
@@ -101,7 +100,7 @@ const Statics: React.FC = () => {
 								<th>T Song</th>
 							</tr>
 
-							{statics?.data.noSongAlbum.map((data, i: number) => (
+							{statics?.data.noSongAlbum.map((data: Data, i: number) => (
 								<tr key={i}>
 									<td>{i + 1}</td>
 									<td>{data.album}</td>
@@ -120,7 +119,7 @@ const Statics: React.FC = () => {
 								<th>T Song</th>
 							</tr>
 
-							{statics?.data.noSongGenre.map((data, i: number) => (
+							{statics?.data.noSongGenre.map((data: Data, i: number) => (
 								<tr key={i}>
 									<td>{i + 1}</td>
 									<td>{data.genre}</td>

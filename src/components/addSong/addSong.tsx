@@ -43,8 +43,8 @@ const AddSong: React.FC = () => {
 						name="title"
 						onChange={(e) => setSong({ ...song, title: e.target.value })}
 						placeholder="Song Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<Label htmlFor="artist">Artist</Label>
@@ -53,8 +53,8 @@ const AddSong: React.FC = () => {
 						name="artist"
 						onChange={(e) => setSong({ ...song, artist: e.target.value })}
 						placeholder="Artist Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<Label htmlFor="album">album</Label>
@@ -63,8 +63,8 @@ const AddSong: React.FC = () => {
 						name="album"
 						onChange={(e) => setSong({ ...song, album: e.target.value })}
 						placeholder="Album Name"
-						size="20"
-						maxLength="20"
+						size={20}
+						maxLength={20}
 						required
 					/>
 					<Label htmlFor="genre">Choose a Genre:</Label>
@@ -79,7 +79,7 @@ const AddSong: React.FC = () => {
 						<option disabled defaultValue="">
 							Select Genre
 						</option>
-						{genre.data?.map((data: Data, i: number) => (
+						{genre.data?.map((data: string, i: number) => (
 							<option value={data} key={i}>
 								{data}
 							</option>

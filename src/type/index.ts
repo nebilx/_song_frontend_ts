@@ -1,7 +1,10 @@
 export type Rstate = {
 	song: {
-		genre: {
+		data: {
 			data: Data[];
+		};
+		genre: {
+			data: string[];
 		};
 		statics: {
 			data: Data[];
@@ -12,7 +15,12 @@ export type Rstate = {
 	};
 };
 
+export interface ContentProps {
+	bar?: boolean; // Using `?` to mark the prop as optional
+}
+
 export interface Data {
+	_id?: string;
 	title: string;
 	artist: string;
 	album: string;
@@ -25,5 +33,29 @@ export interface Song {
 	genre: Data[];
 	isLoading: boolean;
 	message: string;
-	error: string;
+	error: string | unknown;
+}
+
+export interface DeleteSongResponseType {
+	data: { message: string };
+}
+
+export interface EditSongResponseType {
+	data: { data: Data[]; message: string };
+}
+
+export interface AddSongResponseType {
+	data: { data: Data[]; message: string };
+}
+
+export interface GetGenreResponseType {
+	data: { data: Data[] };
+}
+
+export interface GetStaticsResponseType {
+	data: { data: Data };
+}
+
+export interface GetSongResponseType {
+	data: { data: Data[] };
 }

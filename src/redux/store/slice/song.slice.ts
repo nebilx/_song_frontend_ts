@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Song } from "../../../type";
+import { Data, Song } from "../../../type";
 
 const initialState: Song = {
 	data: [],
@@ -27,19 +27,22 @@ const songSlice = createSlice({
 		setSong(state, action: PayloadAction<Data[]>) {
 			state.data = action.payload;
 		},
-		setStatics(state, action: PayloadAction<Data>) {
+		setStatics(state, action: PayloadAction<Data | null>) {
 			state.statics = action.payload;
 		},
 		setGenre(state, action: PayloadAction<Data[]>) {
 			state.genre = action.payload;
 		},
-		addSong(state) {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		addSong(state, action: PayloadAction<{ data: Data }>) {
 			state.isLoading = true;
 		},
-		editSong(state) {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		editSong(state, action: PayloadAction<{ id: string; data: Data }>) {
 			state.isLoading = true;
 		},
-		deleteSong(state) {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		deleteSong(state, action: PayloadAction<{ id: string }>) {
 			state.isLoading = true;
 		},
 
@@ -52,7 +55,7 @@ const songSlice = createSlice({
 			state.message = action.payload;
 		},
 		//error messages
-		setError(state, action: PayloadAction<string>) {
+		setError(state, action: PayloadAction<string | unknown>) {
 			state.error = action.payload;
 		},
 	},
