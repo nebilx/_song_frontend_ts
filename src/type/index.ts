@@ -43,7 +43,7 @@ export interface SongData {
 	noSongAlbum: NoSongAlbum[];
 }
 
-export interface ContentProps {
+export interface BarProp {
 	bar?: boolean;
 }
 

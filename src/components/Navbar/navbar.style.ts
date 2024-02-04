@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { BarProp } from "../../type";
 export const Container = styled.div`
   width: 85%;
   max-width: 1280px;
@@ -14,7 +15,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<BarProp>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,7 +74,7 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<BarProp>`
   background-color: gray;
   padding: 15px;
   margin: 10px;
@@ -97,7 +98,7 @@ export const Nav = styled.nav`
   z-index: 10000;
 `;
 
-export const Bar = styled.div`
+export const Bar = styled.div<BarProp>`
   width: 40px;
   height: 40px;
   border: 1px solid #fff;

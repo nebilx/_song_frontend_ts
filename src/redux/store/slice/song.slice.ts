@@ -34,18 +34,17 @@ const songSlice = createSlice({
 			state.genre = action.payload;
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		addSong(state, action: PayloadAction<{ data: Data }>) {
+		addSong(state, _action: PayloadAction<{ data: Data }>) {
 			state.isLoading = true;
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		editSong(state, action: PayloadAction<{ id: string; data: Data }>) {
+		editSong(state, _action: PayloadAction<{ id: string; data: Data }>) {
 			state.isLoading = true;
 		},
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		deleteSong(state, action: PayloadAction<{ id: string }>) {
+		deleteSong(state, _action: PayloadAction<{ id: string }>) {
 			state.isLoading = true;
 		},
-
 		setIsLoading(state) {
 			state.isLoading = false;
 		},

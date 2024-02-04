@@ -1,8 +1,9 @@
 import { Container, Content, Logo, Nav, Bar, NavLink } from "./navbar.style";
 import { BsMusicNoteList } from "react-icons/bs";
 import { useState } from "react";
+
 const Navbar: React.FC = () => {
-	const [bar, setBar] = useState(false);
+	const [bar, setBar] = useState<boolean>(false);
 	return (
 		<Container>
 			<Content bar={bar}>
