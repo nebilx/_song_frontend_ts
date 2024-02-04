@@ -30,7 +30,7 @@ const Statics: React.FC = () => {
 				<div className="ContainerLoader">
 					<span className="loader" />
 				</div>
-			) : (
+			) : statics ? (
 				<>
 					<center>
 						<Head>Statics</Head>
@@ -135,6 +135,8 @@ const Statics: React.FC = () => {
 					</Container>
 					<br />
 				</>
+			) : (
+				<div>No Data</div>
 			)}
 		</>
 	);

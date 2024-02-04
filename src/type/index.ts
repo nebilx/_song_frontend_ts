@@ -2,7 +2,7 @@ export type MainState = {
 	song: {
 		data: Data[];
 		genre: string[];
-		statics: SongData[];
+		statics: SongData | null;
 		isLoading: boolean;
 		message: string;
 		error: string;
@@ -37,7 +37,7 @@ export interface NoSongAlbum {
 }
 
 export interface SongData {
-	noSongTotal: NoSongTotal[];
+	noSongTotal: SongCount[];
 	noSongGenre: NoSongGenre[];
 	noSongAndAlbumArtist: NoSongAndAlbumArtist[];
 	noSongAlbum: NoSongAlbum[];
@@ -57,7 +57,7 @@ export interface Data {
 
 export interface Song {
 	data: Data[];
-	statics: SongData[];
+	statics: SongData | null;
 	genre: string[];
 	isLoading: boolean;
 	message: string;
@@ -82,5 +82,5 @@ export interface GetGenreResponseType {
 }
 
 export interface GetStaticsResponseType {
-	data: { data: SongData[] };
+	data: { data: SongData };
 }

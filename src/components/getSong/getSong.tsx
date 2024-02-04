@@ -24,7 +24,7 @@ const Song: React.FC = () => {
 				<div className="ContainerLoader">
 					<span className="loader" />
 				</div>
-			) : (
+			) : song ? (
 				<>
 					<Container>
 						<Head>Songs</Head>
@@ -70,7 +70,9 @@ const Song: React.FC = () => {
 						</Table>
 					</Container>
 				</>
-			)}{" "}
+			) : (
+				<div>No Data</div>
+			)}
 		</>
 	);
 };

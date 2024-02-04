@@ -61,7 +61,7 @@ export function* handleAddSong(action: PayloadAction<{ data: Data }>) {
 	try {
 		const song: AddSongResponseType = yield call(
 			request.addSong,
-			action.payload,
+			action.payload.data,
 		);
 		yield put(setMessage(song.data.message));
 		yield put(setIsLoading());
@@ -78,7 +78,7 @@ export function* handleEditSong(
 		const song: EditSongResponseType = yield call(
 			request.editSong,
 			action.payload.id,
-			{ data: action.payload.data },
+			action.payload.data,
 		);
 		yield put(setMessage(song.data.message));
 		yield put(getSong());
