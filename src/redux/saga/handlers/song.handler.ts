@@ -33,11 +33,15 @@ export function* handleGetSong() {
 
 export function* handleGetStatics() {
 	try {
+		console.log("---");
 		const statics: GetStaticsResponseType = yield call(request.getStatics);
+		console.log(statics);
 		yield put(setStatics(statics.data.data));
 		yield put(setIsLoading());
 	} catch (error) {
-		yield put(setIsLoading());
+		console.log("error");
+		console.log(error);
+		// yield put(setIsLoading());
 		yield put(setError(error));
 	}
 }

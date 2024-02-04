@@ -27,7 +27,7 @@ const songSlice = createSlice({
 		setSong(state, action: PayloadAction<Data[]>) {
 			state.data = action.payload;
 		},
-		setStatics(state, action: PayloadAction<SongData>) {
+		setStatics(state, action: PayloadAction<SongData[]>) {
 			state.statics = action.payload;
 		},
 		setGenre(state, action: PayloadAction<string[]>) {

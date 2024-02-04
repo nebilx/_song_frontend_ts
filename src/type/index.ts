@@ -57,33 +57,30 @@ export interface Data {
 
 export interface Song {
 	data: Data[];
-	statics: [] | null;
+	statics: SongData[];
 	genre: string[];
 	isLoading: boolean;
 	message: string;
 	error: string | unknown;
 }
 
+export interface AddSongResponseType {
+	data: { message: string };
+}
+export interface EditSongResponseType {
+	data: { message: string };
+}
 export interface DeleteSongResponseType {
 	data: { message: string };
 }
 
-export interface EditSongResponseType {
-	data: { data: Data[]; message: string };
-}
-
-export interface AddSongResponseType {
-	data: { data: Data[]; message: string };
-}
-
-export interface GetGenreResponseType {
+export interface GetSongResponseType {
 	data: { data: Data[] };
+}
+export interface GetGenreResponseType {
+	data: { data: string[] };
 }
 
 export interface GetStaticsResponseType {
-	data: { data: Data };
-}
-
-export interface GetSongResponseType {
-	data: { data: Data[] };
+	data: { data: SongData[] };
 }

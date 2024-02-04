@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Data } from "../../../type";
-axios.defaults.baseURL = "song-backend-ts.onrender.com/";
+axios.defaults.baseURL = "https://song-backend-ts.onrender.com";
 export const request = {
 	getSong: () =>
 		axios.request({
