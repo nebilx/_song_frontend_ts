@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setMessage, setError } from "./redux/store/slice/song.slice";
 import toast, { Toaster } from "react-hot-toast";
-import { Rstate } from "./type";
+import { MainState } from "./type";
 
 import EditSong from "./components/editSong/editSong";
 import AddSong from "./components/addSong/addSong";
@@ -13,8 +13,8 @@ import Song from "./components/getSong/getSong";
 import Statics from "./components/getStatics/getStatics";
 
 const App: React.FC = () => {
-	const message = useSelector((state: Rstate) => state.song.message);
-	const error = useSelector((state: Rstate) => state.song.error);
+	const message = useSelector((state: MainState) => state.song.message);
+	const error = useSelector((state: MainState) => state.song.error);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
