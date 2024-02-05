@@ -42,7 +42,7 @@ const Statics: React.FC = () => {
 								<span>
 									<GiSing />
 								</span>
-								<h2>{statics?.noSongTotal[0].title}</h2>
+								<h2>{statics?.noSongTotal.title}</h2>
 							</Card>
 
 							<Card>
@@ -50,7 +50,7 @@ const Statics: React.FC = () => {
 								<span>
 									<RiAlbumFill />
 								</span>
-								<h2>{statics?.noSongTotal[0].album}</h2>
+								<h2>{statics?.noSongTotal.album}</h2>
 							</Card>
 
 							<Card>
@@ -58,7 +58,7 @@ const Statics: React.FC = () => {
 								<span>
 									<BsFillPersonBadgeFill />
 								</span>
-								<h2>{statics?.noSongTotal[0].artist}</h2>
+								<h2>{statics?.noSongTotal.artist}</h2>
 							</Card>
 
 							<Card>
@@ -66,7 +66,7 @@ const Statics: React.FC = () => {
 								<span>
 									<RiFolderMusicFill />
 								</span>
-								<h2>{statics?.noSongTotal[0].genre}</h2>
+								<h2>{statics?.noSongTotal.genre}</h2>
 							</Card>
 						</CardContainer>
 					</Container>
