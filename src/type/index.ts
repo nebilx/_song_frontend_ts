@@ -73,6 +73,9 @@ export interface EditSongResponseType {
 export interface DeleteSongResponseType {
   data: { message: string };
 }
+export interface ErrorSongResponseType {
+  message: string;
+}
 
 export interface GetSongResponseType {
   data: { data: Data[] };

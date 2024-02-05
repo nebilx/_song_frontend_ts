@@ -14,6 +14,7 @@ import {
   Data,
   DeleteSongResponseType,
   EditSongResponseType,
+  ErrorSongResponseType,
   GetGenreResponseType,
   GetSongResponseType,
   GetStaticsResponseType,
@@ -25,22 +26,18 @@ export function* handleGetSong() {
     const song: GetSongResponseType = yield call(request.getSong);
     yield put(setSong(song.data.data));
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
 }
 
 export function* handleGetStatics() {
   try {
-    console.log("---");
     const statics: GetStaticsResponseType = yield call(request.getStatics);
-    console.log(statics);
     yield put(setStatics(statics.data.data));
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
 }
 
@@ -49,9 +46,8 @@ export function* handleGetGenre() {
     const genre: GetGenreResponseType = yield call(request.getGenre);
     yield put(setGenre(genre.data.data));
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
 }
 
@@ -63,9 +59,8 @@ export function* handleAddSong(action: PayloadAction<{ data: Data }>) {
     );
     yield put(setMessage(song.data.message));
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
 }
 
@@ -81,9 +76,8 @@ export function* handleEditSong(
     yield put(setMessage(song.data.message));
     yield put(getSong());
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
 }
 
@@ -96,8 +90,28 @@ export function* handleDeleteSong(action: PayloadAction<{ id: string }>) {
     yield put(setMessage(song.data.message));
     yield put(getSong());
     yield put(setIsLoading());
-  } catch (error) {
-    yield put(setIsLoading());
-    yield put(setError(error));
+  } catch (e: unknown) {
+    yield call(handleRequestErrorSaga, e);
   }
+}
+
+export function* handleRequestErrorSaga(e: unknown) {
+  let errorMessage = "Unknown error occurred";
+
+  if (typeof e === "object" && e !== null && "response" in e) {
+    const response = (
+      e as { response?: { data?: { error?: ErrorSongResponseType } } }
+    ).response;
+    if (
+      response &&
+      response.data &&
+      response.data.error &&
+      response.data.error.message
+    ) {
+      errorMessage = response.data.error.message;
+    }
+  }
+
+  yield put(setIsLoading());
+  yield put(setError(errorMessage));
 }
